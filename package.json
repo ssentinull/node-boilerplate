@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npm run build && node dist/app.js",
     "build": "rimraf ./dist && tsc",
+    "debug": "export DEBUG=* && npm run start",
     "dev": "nodemon",
     "lint": "eslint . --ext .ts",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
