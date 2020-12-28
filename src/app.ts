@@ -1,5 +1,6 @@
 import { CommonRoutesConfig } from './common/common.routes.config';
 import { UsersRoutes } from './users/users.routes.config';
+import { UserUsecase } from './users/user.usecase';
 import { createServer, Server } from 'http';
 import { json } from 'body-parser';
 import { format, transports } from 'winston';
@@ -9,11 +10,6 @@ import cors from 'cors';
 import debug from 'debug';
 
 const app: express.Application = express();
-const server: Server = createServer(app);
-const port = 3000;
-const routes: Array<CommonRoutesConfig> = [];
-const debugLog: debug.IDebugger = debug('app');
-
 app.use(json());
 app.use(cors());
 app.use(
@@ -23,7 +19,9 @@ app.use(
   })
 );
 
-routes.push(new UsersRoutes(app));
+const userUsecase: UserUsecase = new UserUsecase();
+const routes: Array<CommonRoutesConfig> = [];
+routes.push(new UsersRoutes(app, userUsecase));
 
 app.use(
   errorLogger({
@@ -36,6 +34,9 @@ app.get('/', (req: express.Request, res: express.Response) => {
   res.status(200).send('Server up and running!');
 });
 
+const server: Server = createServer(app);
+const port = 3000;
+const debugLog: debug.IDebugger = debug('app');
 server.listen(port, () => {
   debugLog(`Server running at http://localhost:${port}`);
   routes.forEach((route: CommonRoutesConfig) => {
