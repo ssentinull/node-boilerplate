@@ -1,3 +1,3 @@
 export abstract class CommonUsecase {
-  abstract get(): string;
+  public abstract greetings(): string;
 }

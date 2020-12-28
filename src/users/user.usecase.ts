@@ -5,7 +5,7 @@ export class UserUsecase extends CommonUsecase {
     super();
   }
 
-  get(): string {
-    return 'hello world';
+  public greetings(): string {
+    return 'hello';
   }
 }
