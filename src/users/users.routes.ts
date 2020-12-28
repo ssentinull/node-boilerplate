@@ -1,10 +1,10 @@
-import { CommonRoutesConfig } from '../common/common.routes.config';
+import { CommonRoutes } from '../common/common.routes';
 import { UserUsecase } from './user.usecase';
 import { Application, NextFunction, Request, Response } from 'express';
 
 const routeName = 'UserRoutes';
 
-export class UsersRoutes extends CommonRoutesConfig {
+export class UsersRoutes extends CommonRoutes {
   constructor(app: Application, usecase: UserUsecase) {
     super(routeName, app, usecase);
   }
