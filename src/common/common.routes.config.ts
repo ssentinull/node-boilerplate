@@ -6,9 +6,9 @@ export abstract class CommonRoutesConfig {
   usecase: CommonUsecase;
   name: string;
 
-  constructor(app: express.Application, name: string, usecase: CommonUsecase) {
-    this.app = app;
+  constructor(name: string, app: express.Application, usecase: CommonUsecase) {
     this.name = name;
+    this.app = app;
     this.usecase = usecase;
     this.configureRoutes();
   }
