@@ -1,10 +1,8 @@
-import { CommonUsecase } from '../common/common.usecase';
+interface IUserUsecase {
+  greetings(): string;
+}
 
-export class UserUsecase extends CommonUsecase {
-  constructor() {
-    super();
-  }
-
+export class UserUsecase implements IUserUsecase {
   public greetings(): string {
     return 'hello';
   }

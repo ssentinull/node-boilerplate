@@ -1,5 +1,4 @@
-import { CommonRoutes } from './common/common.routes';
-import { UsersRoutes } from './users/users.routes';
+import { UserRoutes } from './users/user.routes';
 import { UserUsecase } from './users/user.usecase';
 import { createServer, Server } from 'http';
 import { json } from 'body-parser';
@@ -20,8 +19,7 @@ app.use(
 );
 
 const userUsecase: UserUsecase = new UserUsecase();
-const routes: Array<CommonRoutes> = [];
-routes.push(new UsersRoutes(app, userUsecase));
+const userRoutes: UserRoutes = new UserRoutes(app, userUsecase);
 
 app.use(
   errorLogger({
@@ -39,7 +37,4 @@ const port = 3000;
 const debugLog: debug.IDebugger = debug('app');
 server.listen(port, () => {
   debugLog(`Server running at http://localhost:${port}`);
-  routes.forEach((route: CommonRoutes) => {
-    debugLog(`Routes configured for ${route.getName()}`);
-  });
 });
