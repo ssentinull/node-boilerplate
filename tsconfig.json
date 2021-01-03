@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
-    "target": "ES6",
+    "experimentalDecorators": true,
+    "module": "commonjs",
     "moduleResolution": "node",
+    "outDir": "dist",
     "sourceMap": true,
-    "outDir": "dist"
+    "target": "ES6"
   },
   "lib": ["es2015"]
 }
