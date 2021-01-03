@@ -1,4 +1,4 @@
-import { User } from './user.model';
+import { User } from '../domain/user.domain';
 import { UserRepository } from './user.repository';
 
 interface IUserUsecase {

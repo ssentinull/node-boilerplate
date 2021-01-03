@@ -1,5 +1,5 @@
 import { Application, Request, Response } from 'express';
-import { User } from './user.model';
+import { User } from '../domain/user.domain';
 import { UserUsecase } from './user.usecase';
 
 interface IUserRoutes {
