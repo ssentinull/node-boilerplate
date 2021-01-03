@@ -7,9 +7,9 @@ import { logger, errorLogger } from 'express-winston';
 import { createServer, Server } from 'http';
 import { createConnection } from 'typeorm';
 import { format, transports } from 'winston';
-import { UserRoutes } from './users/user.routes';
-import { UserUsecase } from './users/user.usecase';
-import { UserRepository } from './users/user.repository';
+import { UserRoutes } from './user/user.route';
+import { UserUsecase } from './user/user.usecase';
+import { UserRepository } from './user/user.repository';
 
 (async () => {
   const app: express.Application = express();
