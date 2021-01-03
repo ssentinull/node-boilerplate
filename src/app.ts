@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import cors from 'cors';
 import debug from 'debug';
 import express from 'express';
+import * as dotenv from 'dotenv';
 import { json, urlencoded } from 'body-parser';
 import { logger, errorLogger } from 'express-winston';
 import { createServer, Server } from 'http';
@@ -22,6 +23,7 @@ import { UserRepository } from './user/user.repository';
       format: format.combine(format.colorize(), format.json())
     })
   );
+  dotenv.config();
 
   const dbConn = await createConnection();
   const userRepo: UserRepository = new UserRepository(dbConn);
@@ -40,9 +42,9 @@ import { UserRepository } from './user/user.repository';
   });
 
   const server: Server = createServer(app);
-  const port = 3000;
   const debugLog: debug.IDebugger = debug('app');
-  server.listen(port, () => {
-    debugLog(`Server running at http://localhost:${port}`);
+  const PORT = 'PORT' in process.env ? process.env.PORT : 3000;
+  server.listen(PORT, () => {
+    debugLog(`Server running at http://localhost:${PORT}`);
   });
 })();
