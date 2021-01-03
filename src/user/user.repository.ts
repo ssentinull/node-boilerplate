@@ -1,6 +1,6 @@
 import { Connection, Repository } from 'typeorm';
 import { User as UserModel } from '../domain/user.domain';
-import { User as UserEntity } from './user.entity';
+import { Users as UserEntity } from './user.entity';
 
 interface IUserRepository {
   create(user: UserModel): Promise<UserModel>;
